@@ -10,6 +10,14 @@ run protractor test on headless ubuntu server in docker
 #sudo useradd -g docker your_name
 #sudo usermod -a -G docker your_name
 </pre>
+
+## Verify protractor test could be running
+<pre>
+npm install
+grunt install
+grunt test:e2e
+</pre>
+
 ## re-login or reboot
 <pre>
 #sudo chown -R your_name:your_name ~/.npm_docker
