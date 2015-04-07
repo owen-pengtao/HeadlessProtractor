@@ -2,20 +2,21 @@
 run protractor test on headless ubuntu server in docker
 
 ## Some step you could follow.
-  # cache your credential for 7776000 seconds
-git config --global credential.helper 'cache --timeout=7776000'
-git clone http://your_git_domain/git/your_product your_product
-git checkout --track develop
-
-sudo useradd -g docker your_name
-sudo usermod -a -G docker your_name
-
+  cache your credential for 7776000 seconds
+<pre>
+#git config --global credential.helper 'cache --timeout=7776000'
+#git clone http://your_git_domain/git/your_product your_product
+#git checkout --track develop
+#sudo useradd -g docker your_name
+#sudo usermod -a -G docker your_name
+</pre>
 ## re-login or reboot
+<pre>
+#sudo chown -R your_name:your_name ~/.npm_docker
 
-sudo chown -R your_name:your_name ~/.npm_docker
+#cd HeadlessProtractor/docker
+#./rebuild.sh
 
-cd HeadlessProtractor/docker
-./rebuild.sh
-
-cd HeadlessProtractor/protractor
-./run-uitest.sh
+#cd HeadlessProtractor/protractor
+#./run-uitest.sh
+</pre>
