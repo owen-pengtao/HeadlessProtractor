@@ -1,30 +1,30 @@
 # HeadlessProtractor
 run protractor test on headless ubuntu server in docker
-
-## Some step you could follow.
-  cache your credential for 7776000 seconds
+## Step 1: Install docker on ubuntu
+Docker installation: https://docs.docker.com/installation/ubuntulinux/
 <pre>
-#git config --global credential.helper 'cache --timeout=7776000'
-#git clone http://your_git_domain/git/your_product your_product
-#git checkout --track develop
-#sudo useradd -g docker your_name
-#sudo usermod -a -G docker your_name
+  wget -qO- https://get.docker.com/ | sh
+  sudo usermod -aG docker <current_username_on_ubuntu>
+</pre>
+then, logout and relogin ubuntu.
+
+## Step 2: Checkout code, build docker image
+<pre>
+#git clone https://github.com/owen-pengtao/HeadlessProtractor.git HeadlessProtractor
+#cd HeadlessProtractor/docker
+#./rebuild.sh
+#sudo chown -R your_name:your_name ~/.npm_docker
 </pre>
 
-## Verify protractor test could be running
+## Step 3: Run protractor test in docker
+<pre>
+#cd HeadlessProtractor/protractor
+#./run-uitest.sh
+</pre>
+
+## Manually Verify protractor test as same as it's running in docker.
 <pre>
 npm install
 grunt install
 grunt test:e2e
-</pre>
-
-## re-login or reboot
-<pre>
-#sudo chown -R your_name:your_name ~/.npm_docker
-
-#cd HeadlessProtractor/docker
-#./rebuild.sh
-
-#cd HeadlessProtractor/protractor
-#./run-uitest.sh
 </pre>
