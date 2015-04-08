@@ -1,8 +1,9 @@
 #!/bin/bash
 
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-SHARED_FOLDER="/home/openg/Desktop/ApolloTest2"
+SHARED_FOLDER="$BASE_DIR/report"
 USER_ID=`id -u`
+DOCKER_TEST_IMAGE="headless/testing:1"
 
 START=$SECONDS
 
@@ -14,8 +15,6 @@ NODE_MODULES_VOLUME=" -v /src/node_modules "
 
 # npm repository volume
 NPM_REPO_VOLUME=" -v $HOME/.npm_docker:/npm "
-
-mkdir -p target
 
 REPORT_OUTPUT="$SHARED_FOLDER/htmlReports"
 mkdir -p "$REPORT_OUTPUT"
@@ -51,8 +50,7 @@ RESULT=0
 
 if [ "$RESULT" == 0 ]; then
 	echo "Launching tests..."
-  TEST_IMAGE="headless/testing:1"
-	docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $TEST_IMAGE $USER_ID
+	docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE $USER_ID
 	if [ "$?" -ne 0 ]; then
         RESULT=1
 	fi
