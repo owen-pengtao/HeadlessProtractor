@@ -4,7 +4,7 @@ run protractor test on headless ubuntu server in docker
 Docker installation: https://docs.docker.com/installation/ubuntulinux/
 <pre>
   wget -qO- https://get.docker.com/ | sh
-  sudo usermod -aG docker <current_username_on_ubuntu>
+  sudo usermod -aG docker your_name
 </pre>
 then, logout and relogin ubuntu.
 
