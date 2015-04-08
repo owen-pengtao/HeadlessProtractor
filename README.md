@@ -3,8 +3,8 @@ run protractor test on headless ubuntu server in docker
 ## Step 1: Install docker on ubuntu
 Docker installation: https://docs.docker.com/installation/ubuntulinux/
 <pre>
-  wget -qO- https://get.docker.com/ | sh
-  sudo usermod -aG docker your_name
+#wget -qO- https://get.docker.com/ | sh
+#sudo usermod -aG docker your_name
 </pre>
 then, logout and relogin ubuntu.
 
@@ -24,7 +24,8 @@ then, logout and relogin ubuntu.
 
 ## Manually Verify protractor test as same as it's running in docker.
 <pre>
-npm install
-grunt install
-grunt test:e2e
+#cd HeadlessProtractor/protractor
+#npm install
+#grunt install
+#grunt test:e2e
 </pre>
