@@ -52,11 +52,8 @@ if [ $? -ne 0 ]; then
 	RESULT=1
 fi
 
-umount $BASE_SRC/target
-
 finish_time=$SECONDS
 elapsed_time="$((finish_time - start_time)) sec."
-echo "$finish_time - $start_time"
 
 # done
 if [ $RESULT -eq 0 ]; then
