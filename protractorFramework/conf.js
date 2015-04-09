@@ -1,38 +1,46 @@
 var suites = {
-    login   : 'tests/login.js'
+  login   : 'tests/login.js'
 };
 
 var baseUrl;
-if ( process.env.UNITY_HOSTNAME ) {
-	baseUrl = "http://" + process.env.UNITY_HOSTNAME + ":" + ( parseInt(process.env.UNITY_BASEPORT) + 80 );
+if ( process.env.HOSTNAME ) {
+  baseUrl = "http://" + process.env.HOSTNAME;
 } else {
-    baseUrl = 'http://10.108.16.94:9680';
+  baseUrl = 'http://127.0.0.1:9680';
 }
-console.log("Base URL: " + baseUrl);
+var capabilities = {
+  'browserName': 'chrome'
+};
+if ( process.env.BROWSER === "firefox") {
+  capabilities = {
+    "browserName": "firefox",
+    "firefox_binary": "/Applications/Firefox34.app/Contents/MacOS/firefox-bin",
+    "binary_": "/Applications/Firefox34.app/Contents/MacOS/firefox-bin"
+  };
+}
+console.log("Browser:" + capabilities.browserName + ", Base URL: " + baseUrl);
 
 exports.config = {
-    seleniumPort: 4444,
-    baseUrl: baseUrl,
-    params: {
-        screen: {
-            width: 1280,
-            height: 800
-        },
-        screenshotPath: "./report/protractor",
-        login: {
-            username: 'admin',
-            password: 'admin'
-        }
+  seleniumPort: 4444,
+  baseUrl: baseUrl,
+  params: {
+    screen: {
+      width: 1280,
+      height: 800
     },
-    allScriptsTimeout: 150000,
-    capabilities: {
-        'browserName': 'chrome'
-    },
+    screenshotPath: "./report/protractor",
+    login: {
+      username: 'admin',
+      password: 'admin'
+    }
+  },
+  allScriptsTimeout: 150000,
+  capabilities: capabilities,
 
-    suites: suites,
+  suites: suites,
 
-    jasmineNodeOpts: {
-        defaultTimeoutInterval: 3600000
-    },
-    onPrepare: './utility/preparation.js'
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 3600000
+  },
+  onPrepare: './utility/preparation.js'
 };

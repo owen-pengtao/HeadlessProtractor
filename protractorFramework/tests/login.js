@@ -1,5 +1,5 @@
 var LoginPage = require('../pageObject/loginPage.js');
-describe('LogLogic loginPage', function() {
+describe('LoginPage ', function() {
     var Page = new LoginPage();
     beforeEach(function(){
         Page.visitPage();

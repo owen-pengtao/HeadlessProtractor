@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -32,13 +32,12 @@ require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
       singlerun: {
       },
 
-      
       adminspecs:  {
-          options: {
-                args: {
-                    specs: ['tests/blok.js', 'tests/correlation.js', 'tests/user.js', 'tests/group.js', 'tests/configuration.js', 'tests/source_regex.js', 'tests/trigger.js']
-                }
+        options: {
+          args: {
+            specs: ['tests/login.js']
           }
+        }
       },
       auto: {
         keepAlive: true,
@@ -49,13 +48,10 @@ require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
         }
       }
     }
-
   });
-
 
   grunt.registerTask('test:e2e', ['protractor:singlerun']);
   grunt.registerTask('test:admin', ['protractor:adminspecs']);
   grunt.registerTask('install', ['update','shell:protractor_install']);
   grunt.registerTask('update', ['shell:npm_install']);
-
 };

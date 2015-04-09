@@ -18,7 +18,7 @@ var today = new Date(),
 
 var reporter = new HtmlReporter({
     baseDirectory: browser.params.screenshotPath, // a location to store screen shots.
-    docTitle: 'Loglogic Protractor Reporter',
+    docTitle: 'Protractor Reporter',
     docName: 'report.html'
 });
 
