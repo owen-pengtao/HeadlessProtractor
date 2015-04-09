@@ -30,18 +30,14 @@ fi
 
 # main host IP
 if [ -z "$UNITY_HOSTNAME" ]; then
-    UNITY_HOSTNAME="$MAIN_HOST_IP"
-fi
-# in case server IP is not specified, and we run on mac, take it from boot2docker
-if [ -z "$UNITY_HOSTNAME" ]; then
-    UNITY_HOSTNAME=`boot2docker ip 2>/dev/null`
+  UNITY_HOSTNAME="$MAIN_HOST_IP"
 fi
 # default server IP to localhost
-if [ -z "$UNITY_HOSTNAME" ]; then
-    UNITY_HOSTNAME=127.0.0.1
+if [ -z "$DISPLAY_SIZE" ]; then
+  DISPLAY_SIZE="1280x800x16"
 fi
 
-ENV=" -e UNITY_HOSTNAME=$UNITY_HOSTNAME -e UNITY_BASEPORT=$UNITY_BASEPORT -e GRUNT_OPTIONS=$GRUNT_OPTIONS"
+ENV=" -e UNITY_HOSTNAME=$UNITY_HOSTNAME -e UNITY_BASEPORT=$UNITY_BASEPORT -e GRUNT_OPTIONS=$GRUNT_OPTIONS -e DISPLAY_SIZE=$DISPLAY_SIZE"
 echo ENV=$ENV
 
 # default result code
@@ -51,7 +47,7 @@ if [ "$RESULT" == 0 ]; then
 	echo "Launching tests..."
 	docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE $USER_ID
 	if [ "$?" -ne 0 ]; then
-        RESULT=1
+    RESULT=1
 	fi
 else
 	echo "Failed to launch logu container, skipping tests..."

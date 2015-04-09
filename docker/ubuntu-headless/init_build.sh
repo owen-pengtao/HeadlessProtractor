@@ -31,11 +31,12 @@ cd $BASE_SRC
 sudo -u $USER HOME="/home/$USER" npm config set cache /npm
 
 # setup XWindows
-/usr/bin/Xvfb :1 -screen 0 1024x768x16 &
+/usr/bin/Xvfb :1 -screen 0 $DISPLAY_SIZE &
 export DISPLAY=:1
 
 x11vnc -display "$DISPLAY" -xkb &
 
+echo "DISPLAY_SIZE=$DISPLAY_SIZE"
 echo "UNITY_HOSTNAME=$UNITY_HOSTNAME"
 echo "UNITY_BASEPORT=$UNITY_BASEPORT"
 
