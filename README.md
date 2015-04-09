@@ -19,7 +19,7 @@ then, logout and relogin ubuntu.
 ## Step 3: Run protractor test in docker
 <pre>
 #cd HeadlessProtractor/protractor
-#./run-uitest.sh
+#./run-in-docker.sh
 </pre>
 
 ## Manually Verify protractor test as same as it's running in docker.
