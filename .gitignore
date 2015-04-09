@@ -1,3 +1,6 @@
 test/node_modules
 protractor/node_modules
 protractor/npm-debug.log
+.idea
+protractorFramework/node_modules
+protractorFramework/report
