@@ -20,7 +20,7 @@ useradd -m -u $USER_ID $USER
 # mapping the target folder to folder inside the container, so the builds on host (like IDE) will not affects it 
 mkdir /out-target
 chown $USER /out-target
-mount --bind /out-target $BASE_SRC/target
+#mount --bind /out-target $BASE_SRC/target
 
 # permissions to write in node_modules
 chown $USER $BASE_SRC/node_modules

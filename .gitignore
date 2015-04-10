@@ -4,4 +4,5 @@ protractor/npm-debug.log
 .idea
 protractorFramework/node_modules
 protractorFramework/report
+protractorFramework/npm-debug.log
 .svn
