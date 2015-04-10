@@ -3,8 +3,8 @@ var suites = {
 };
 
 var baseUrl;
-if ( process.env.HOSTNAME ) {
-  baseUrl = "http://" + process.env.HOSTNAME;
+if ( process.env.SERVER_HOSTNAME ) {
+  baseUrl = "http://" + process.env.SERVER_HOSTNAME;
 } else {
   baseUrl = 'http://127.0.0.1:9680';
 }

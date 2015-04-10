@@ -7,4 +7,4 @@ if [ "$1" ]; then
 fi
 
 cd $BASE_DIR
-DISPLAY_SIZE=1280x800x16 GRUNT_OPTIONS="$SUITE" ./run-in-docker.sh
+SERVER_HOSTNAME="10.108.16.94:9680" BROWSER=firefox DISPLAY_SIZE=1920x1080x16 GRUNT_OPTIONS="$SUITE" ./run-in-docker.sh

@@ -23,21 +23,16 @@ REPORT_VOLUME=" -v $REPORT_OUTPUT:/src/report"
 OUT_VOLUME=" -v $SHARED_FOLDER:/out "
 echo "USER_ID=$USER_ID"
 
-# defaults for hostname and baseport
-if [ -z "$UNITY_BASEPORT" ];  then
-  UNITY_BASEPORT=9600
-fi
-
 # main host IP
-if [ -z "$UNITY_HOSTNAME" ]; then
-  UNITY_HOSTNAME="$MAIN_HOST_IP"
+if [ -z "$SERVER_HOSTNAME" ]; then
+  SERVER_HOSTNAME="$SERVER_HOSTNAME"
 fi
 # default server IP to localhost
 if [ -z "$DISPLAY_SIZE" ]; then
   DISPLAY_SIZE="1280x800x16"
 fi
 
-ENV=" -e UNITY_HOSTNAME=$UNITY_HOSTNAME -e UNITY_BASEPORT=$UNITY_BASEPORT -e GRUNT_OPTIONS=$GRUNT_OPTIONS -e DISPLAY_SIZE=$DISPLAY_SIZE"
+ENV=" -e SERVER_HOSTNAME=$SERVER_HOSTNAME -e GRUNT_OPTIONS=$GRUNT_OPTIONS -e DISPLAY_SIZE=$DISPLAY_SIZE"
 echo ENV=$ENV
 
 # default result code
