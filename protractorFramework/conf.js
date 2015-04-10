@@ -18,6 +18,12 @@ if ( process.env.BROWSER === "firefox") {
     "binary_": "/Applications/Firefox34.app/Contents/MacOS/firefox-bin"
   };
 }
+var screen = [1280, 800];
+if ( process.env.DISPLAY_SIZE ) {
+  var arr = process.env.DISPLAY_SIZE.split("x");
+  screen = [Number(arr[0]), Number(arr[1])];
+  console.log("DISPLAY width X height: " + screen.join(" X "));
+}
 console.log("Browser:" + capabilities.browserName + ", Base URL: " + baseUrl);
 
 exports.config = {
@@ -25,8 +31,8 @@ exports.config = {
   baseUrl: baseUrl,
   params: {
     screen: {
-      width: 1280,
-      height: 800
+      width: screen[0],
+      height: screen[1]
     },
     screenshotPath: "./report/protractor",
     login: {
