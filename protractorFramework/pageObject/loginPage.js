@@ -24,7 +24,7 @@ var LoginPage = (function () {
         username = username || browser.params.login.username;
         password = passoword || browser.params.login.password;
 
-        globalCommons.waitForElementPresent(element(this.screenElement), true, {timeout: 10000}).then(function () {
+        globalCommons.waitForElementPresent(element(this.screenElement)).then(function () {
             return element(that.usernameInput).sendKeys(username);
         }).then(function () {
             return element(that.passwordInput).sendKeys(password);

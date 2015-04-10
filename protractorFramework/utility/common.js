@@ -21,13 +21,13 @@ var globalCommons = {
                     return _bool === isPresent;
                 });
 
-             },timeout)
+             },timeout);
         };
 
         if (_bool) {
             return waitPresent(_bool).then(function(){
                 return waitDisplay(_bool);
-            })
+            };
         }else{
            return waitDisplay(_bool); 
         }
