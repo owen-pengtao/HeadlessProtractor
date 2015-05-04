@@ -1,21 +1,22 @@
 {
-    "name": "apollo",
-    "description": "Apollo NodeJS E2E Test project",
+    "name": "PageObjectProtractorTest",
+    "description": "PageObject of protractor test E2E Test project",
     "version": "1.0.0-SNAPSHOT",
     "private": true,
     "dependencies": {
     },
     "devDependencies": {
-        "grunt-protractor-runner": "^1.1.4",
-        "grunt-shell": "~0.4.0",
-        "grunt-shell-spawn": "~0.3.0",
-        "grunt-text-replace": "~0.3.12",
-        "matchdep": "~0.1.2",
-        "protractor": "^1.4.0",
-        "protractor-html-screenshot-reporter": "0.0.17",
-        "chai": "~2.0.0",
-        "chai-as-promised": "~4.2.0",
-        "jasmine-bail-fast": "~0.0.1",
-        "webdriver-manager": "~1.0.1"
+        "grunt-protractor-runner": "^1.2.1",
+        "grunt": "^0.4.5",
+        "grunt-shell": "^1.1.2",
+        "grunt-shell-spawn": "^0.3.2",
+        "grunt-text-replace": "^0.4.0",
+        "matchdep": "^0.3.0",
+        "protractor": "^1.8.0",
+        "protractor-html-screenshot-reporter": "^0.0.19",
+        "chai": "^2.2.0",
+        "chai-as-promised": "^5.0.0",
+        "jasmine-bail-fast": "^0.0.1",
+        "webdriver-manager": "^5.0.0"
     }
 }
