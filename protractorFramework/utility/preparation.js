@@ -1,7 +1,3 @@
-/**
- * Created by Tony on 11/26/14.
- * Desc: This file is used for the preparation before the spec files executed.
- */
 var LoginPage = require('../pageObject/loginPage.js');
 var HtmlReporter = require('protractor-html-screenshot-reporter');
 

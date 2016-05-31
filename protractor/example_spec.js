@@ -1,9 +1,9 @@
 describe('Go to google.com', function() {
   beforeEach(function() {
-    browser.driver.get('https://www.google.com/');
+    browser.driver.get('https://www.google.com');
   });
 
-  it('Should show search screen', function() {
+  it('The title Should be: Google', function() {
     expect(browser.driver.getTitle()).toEqual('Google');
   });
 });

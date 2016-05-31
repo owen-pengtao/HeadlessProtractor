@@ -44,12 +44,16 @@ echo ENV=$ENV
 RESULT=0
 
 if [ "$RESULT" == 0 ]; then
-	echo "Launching tests..."
-	echo "docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE $USER_ID"
-	docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE $USER_ID
-	if [ "$?" -ne 0 ]; then
+  echo "Launching tests..."
+  ALL_PARAMETER="$SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE"
+  if [ "$(uname)" == "Linux" ]; then
+    ALL_PARAMETER="$ALL_PARAMETER $USER_ID"
+  fi
+  echo "docker run  --privileged --rm  -t $ALL_PARAMETER"
+  docker run  --privileged --rm  -t $ALL_PARAMETER
+  if [ "$?" -ne 0 ]; then
     RESULT=1
-	fi
+  fi
 else
 	echo "Failed to launch logu container, skipping tests..."
 fi

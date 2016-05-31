@@ -40,7 +40,7 @@ RESULT=0
 
 if [ "$RESULT" == 0 ]; then
 	echo "Launching tests..."
-	docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE $USER_ID
+	docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE 
 	if [ "$?" -ne 0 ]; then
     RESULT=1
 	fi
