@@ -49,8 +49,8 @@ if [ "$RESULT" == 0 ]; then
   if [ "$(uname)" == "Linux" ]; then
     ALL_PARAMETER="$ALL_PARAMETER $USER_ID"
   fi
-  echo "docker run  --privileged --rm  -t $ALL_PARAMETER"
-  docker run  --privileged --rm  -t $ALL_PARAMETER
+  echo "docker run  --privileged --rm  -it --entrypoint=/bin/bash $ALL_PARAMETER"
+  docker run  --privileged --rm  -it $ALL_PARAMETER
   if [ "$?" -ne 0 ]; then
     RESULT=1
   fi

@@ -1,4 +1,4 @@
-FROM headless/ubuntu-base-java:7
+FROM headless/ubuntu-base-java:8
 
 RUN apt-get update \
     && apt-get install -y --force-yes --no-install-recommends  \

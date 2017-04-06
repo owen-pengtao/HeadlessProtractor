@@ -15,7 +15,7 @@ NODE_MODULES_VOLUME=" -v /src/node_modules "
 # npm repository volume
 NPM_REPO_VOLUME=" -v $HOME/.npm_docker:/npm "
 
-REPORT_OUTPUT="$SHARED_FOLDER/htmlReports"
+REPORT_OUTPUT="$SHARED_FOLDER/dockerReports"
 mkdir -p "$REPORT_OUTPUT"
 REPORT_VOLUME=" -v $REPORT_OUTPUT:/src/report"
 
@@ -40,10 +40,15 @@ RESULT=0
 
 if [ "$RESULT" == 0 ]; then
 	echo "Launching tests..."
-	docker run  --privileged --rm  -t $SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE 
-	if [ "$?" -ne 0 ]; then
+  ALL_PARAMETER="$SOURCES_VOLUME $ENV $NODE_MODULES_VOLUME $OUT_VOLUME $NPM_REPO_VOLUME $REPORT_VOLUME $DOCKER_TEST_IMAGE"
+  if [ "$(uname)" == "Linux" ]; then
+    ALL_PARAMETER="$ALL_PARAMETER $USER_ID"
+  fi
+  echo "docker run  --privileged --rm  -it --entrypoint=/bin/bash $ALL_PARAMETER"
+  docker run  --privileged --rm  -it $ALL_PARAMETER
+  if [ "$?" -ne 0 ]; then
     RESULT=1
-	fi
+  fi
 else
 	echo "Failed to launch logu container, skipping tests..."
 fi

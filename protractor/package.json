@@ -1,23 +1,22 @@
 {
-    "name": "SimpleProtractorTest",
-    "description": "Simple protractor E2E Test project",
-    "version": "1.0.0-SNAPSHOT",
-    "private": true,
-    "dependencies": {
-    },
-    "devDependencies": {
-        "grunt-protractor-runner": "^2.0.0",
-        "grunt": "^0.4.5",
-        "grunt-shell": "^1.1.2",
-        "grunt-shell-spawn": "^0.3.2",
-        "grunt-text-replace": "^0.4.0",
-        "matchdep": "^0.3.0",
-        "protractor": "^2.0.0",
-        "protractor-html-screenshot-reporter": "^0.0.19",
-        "chai": "^2.2.0",
-        "chai-as-promised": "^5.0.0",
-        "jasmine-bail-fast": "^0.0.1",
-        "webdriver-manager": "^5.0.0"
-    }
+  "name": "SimpleProtractorTest",
+  "description": "Simple protractor E2E Test project",
+  "version": "1.0.0-SNAPSHOT",
+  "private": true,
+  "dependencies": {
+    "grunt-cli": "1.2.0"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "chai-as-promised": "6.0.0",
+    "grunt": "1.0.1",
+    "grunt-protractor-runner": "5.0.0",
+    "grunt-shell-spawn": "0.3.8",
+    "grunt-text-replace": "0.4.0",
+    "matchdep": "1.0.1",
+    "protractor": "5.1.1",
+    "protractor-jasmine2-screenshot-reporter": "0.3.2",
+    "underscore": "1.8.3",
+    "webdriver-manager": "12.0.4"
+  }
 }
-
