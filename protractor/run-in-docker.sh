@@ -15,7 +15,7 @@ NODE_MODULES_VOLUME=" -v /src/node_modules "
 # npm repository volume
 NPM_REPO_VOLUME=" -v $HOME/.npm_docker:/npm "
 
-REPORT_OUTPUT="$SHARED_FOLDER/htmlReports"
+REPORT_OUTPUT="$SHARED_FOLDER/dockerReports"
 mkdir -p "$REPORT_OUTPUT"
 REPORT_VOLUME=" -v $REPORT_OUTPUT:/src/report"
 

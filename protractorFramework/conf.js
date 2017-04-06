@@ -1,12 +1,12 @@
 var suites = {
-  login   : 'tests/login.js'
+  search   : 'tests/search.js'
 };
 
 var baseUrl;
 if ( process.env.SERVER_HOSTNAME ) {
   baseUrl = "http://" + process.env.SERVER_HOSTNAME;
 } else {
-  baseUrl = 'http://127.0.0.1:9680';
+  baseUrl = 'https://www.google.com';
 }
 var capabilities = {
   'browserName': 'chrome'
@@ -25,6 +25,18 @@ if ( process.env.DISPLAY_SIZE ) {
   console.log("DISPLAY width X height: " + screen.join(" X "));
 }
 console.log("Browser:" + capabilities.browserName + ", Base URL: " + baseUrl);
+
+var HtmlReporter = require('protractor-jasmine2-screenshot-reporter');
+var reporter = new HtmlReporter({
+  dest: "./report/protractor", // a location to store screen shots.
+  docTitle: 'HeadLess Protractor Reporter',
+  cleanDestination: true,
+  showSummary: false,
+  showConfiguration: false,
+  reportTitle: null,
+  filename: 'report.html'
+});
+
 
 exports.config = {
   seleniumPort: 4444,
@@ -48,5 +60,28 @@ exports.config = {
   jasmineNodeOpts: {
     defaultTimeoutInterval: 60000
   },
-  onPrepare: './utility/preparation.js'
+  // Setup the report before any tests start
+  beforeLaunch: function() {
+    return new Promise(function(resolve){
+      reporter.beforeLaunch(resolve);
+    });
+  },
+
+  // Close the report after all tests finish
+  afterLaunch: function(exitCode) {
+    return new Promise(function(resolve){
+      reporter.afterLaunch(resolve.bind(this, exitCode));
+    });
+  },
+  onPrepare: function() {
+    var chai = require('chai');
+    var chaiAsPromised = require('chai-as-promised');
+    chai.use(chaiAsPromised);
+    global.expect = chai.expect;
+
+    browser.driver.manage().window().setSize(browser.params.screen.width, browser.params.screen.height);
+    jasmine.getEnv().addReporter(reporter);
+
+    return browser.sleep(1000);
+  }
 };
