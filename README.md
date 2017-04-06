@@ -3,8 +3,11 @@ run protractor test on headless ubuntu server in docker
 ## Step 1: Install docker on ubuntu
 Docker installation: https://docs.docker.com/installation/ubuntulinux/
 <pre>
-#wget -qO- https://get.docker.com/ | sh
-#sudo usermod -aG docker your_name
+#For Mac: https://docs.docker.com/docker-for-mac/install/
+#For Ubuntu: https://docs.docker.com/engine/installation/linux/ubuntu/
+
+if you have installed, try to upgrade.
+#docker-machine upgrade
 </pre>
 then, logout and relogin ubuntu.
 
