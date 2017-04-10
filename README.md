@@ -16,8 +16,12 @@ then, logout and relogin ubuntu.
 <pre>
 #git clone https://github.com/owen-pengtao/HeadlessProtractor.git HeadlessProtractor
 #cd HeadlessProtractor/docker
-#./rebuild.sh
-#sudo chown -R your_name:your_name ~/.npm_docker
+#./rebuild_all.sh
+</pre>
+
+if you are using ubuntu, maybe need run below commond to change folder ~/.npm_docker owner and group.
+<pre>
+#sudo chown -R your_name:your_group ~/.npm_docker
 </pre>
 
 ## Step 3: Run protractor test in docker
