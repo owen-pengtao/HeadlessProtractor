@@ -19,7 +19,7 @@ then, logout and relogin ubuntu.
 #./rebuild_all.sh
 </pre>
 
-if you are using ubuntu, maybe need run below commond to change folder ~/.npm_docker owner and group.
+if you are using ubuntu, maybe need run below command to change folder ~/.npm_docker owner and group.
 <pre>
 #sudo chown -R your_name:your_group ~/.npm_docker
 </pre>
