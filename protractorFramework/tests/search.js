@@ -12,8 +12,8 @@ describe('SearchPage ', function() {
 
 
   it('Should display search error message', function() {
-    Page.search("HeadlessProtractor").then(function(){
-      expect(browser.getCurrentUrl()).to.eventually.equal('https://www.google.com/#q=HeadlessProtractor');
+    Page.search("HeadlessProtractor Owen Peng").then(function(){
+      expect(browser.getCurrentUrl()).to.eventually.equal('https://www.google.com/#q=HeadlessProtractor+Owen+Peng');
       browser.sleep(3000);
     }).then(function(){
       expect(element(by.xpath('//a[contains(text(), "GitHub - owen-pengtao/HeadlessProtractor")]')).isPresent()).to.eventually.be.true;
