@@ -37,10 +37,18 @@ var reporter = new HtmlReporter({
   filename: 'report.html'
 });
 
-
+var jvmArgs = ["-Dwebdriver.gecko.driver=node_modules/webdriver-manager/selenium/geckodriver-v0.17.0"];    // firefox Web Driver location
+if (process.platform === "win32") {
+  jvmArgs = ["-Dwebdriver.gecko.driver=node_modules/webdriver-manager/selenium/geckodriver-v0.17.0.exe",
+    "-Dwebdriver.ie.driver=node_modules/webdriver-manager/selenium/IEDriverServer.exe",
+    "-Dwebdriver.edge.driver=node_modules/webdriver-manager/selenium/MicrostWebDriver.exe"]
+}
 exports.config = {
   seleniumPort: 4444,
   baseUrl: baseUrl,
+  localSeleniumStandaloneOpts: {
+    jvmArgs: jvmArgs,
+  },
   params: {
     screen: {
       width: screen[0],
